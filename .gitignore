@@ -1,0 +1,39 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.env
+.venv/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Streamlit
+.streamlit/
+
+# Fabric wallet and crypto materials
+wallet/
+connection-profile/
+*.pem
+*.id
+
+# Uploaded files
+uploads/
+*.pdf
+*.png
+*.jpg
+*.jpeg
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
