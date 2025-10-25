@@ -4,6 +4,12 @@ import hashlib
 from PIL import Image
 import io
 
+# ---------------------------
+# Backend Configuration
+# ---------------------------
+BACKEND_URL = "https://blckchn-vrfctn.onrender.com"  
+#----------------------------
+
 st.set_page_config(page_title="ID Validation Blockchain", layout="centered")
 
 st.title("🛡️ Blockchain ID Verification")
@@ -35,7 +41,7 @@ if st.button("Upload") and uploaded_file and user_id:
     files = {"file": (uploaded_file.name, uploaded_file.getvalue())}
     data = {"userId": user_id}
     try:
-        response = requests.post("http://localhost:5000/upload", files=files, data=data)
+        response = requests.post(f"{BACKEND_URL}/upload", files=files, data=data)
         if response.status_code == 200:
             st.success(response.json().get("message"))
         else:
@@ -51,7 +57,7 @@ query_user_id = st.text_input("Enter User ID to Query", "")
 
 if st.button("Query") and query_user_id:
     try:
-        response = requests.get(f"http://localhost:5000/query/{query_user_id}")
+        response = requests.get(f"{BACKEND_URL}/query/{query_user_id}")
         if response.status_code == 200:
             record = response.json()
             st.success(f"User ID: {record['userId']}\nHash: {record['hashValue']}")
